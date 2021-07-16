@@ -1,12 +1,43 @@
-set number
-set nocompatible
-filetype plugin on
-syntax on
-set autoindent
-set tabstop=4
-set expandtab
-set softtabstop=4
-colorscheme monokai
+syntax on                   "Enable syntax highlighting
+
+set number                  "Enabel numbers
+
+set noswapfile              "Doesn't not create a swap file
+
+"Set up persistent undo across all file
+set undofile                "Remember undo history
+if !isdirectory("$HOME/.vim/undodir")
+    call mkdir("$HOME/.vim/undodir","p")
+endif
+set undodir="$HOME/.vim/undodir"
+
+
+packloadall                 "Load all plugins.
+
+silent! helptags ALL        "Load help files for all plugins
+
+filetype plugin indent on   "Enable file type based intendation
+
+set autoindent              "Respect Indentation when starting a new line
+
+set expandtab               "Expand tabs in spaces, Essential in python
+
+set tabstop=4               "Number of spaces tab is counted
+
+set shiftwidth=4            "Number of spaces to use for autoindent
+
+
+set backspace=2             "Fix backspace behaviour in most terminals
+
+
+colorscheme monokai         "Changes the colorscheme 
+
+
+"Fast split navigation using <Ctrl> + hjkl
+noremap <c-h> <c-w><c-h>
+noremap <c-j> <c-w><c-j>
+noremap <c-k> <c-w><c-k>
+noremap <c-l> <c-w><c-l>
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
